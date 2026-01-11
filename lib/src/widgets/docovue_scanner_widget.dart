@@ -85,7 +85,6 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
   
   // Auto-detection timer
   Timer? _detectionTimer;
-  String? _lastCapturedImagePath;
   bool _autoCaptureLocked = false;
   int _consecutiveFailures = 0; // Track detection failures
   
@@ -338,7 +337,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
           });
           
           // Reset after showing error
-          await Future.delayed(const Duration(seconds: 3));
+          await Future<void>.delayed(const Duration(seconds: 3));
           setState(() {
             _livenessCheckFailed = false;
             _livenessError = null;
@@ -454,49 +453,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
     ) ?? false;
   }
 
-  Future<void> _importFromGallery() async {
-    if (!widget.config.enableGalleryImport) return;
 
-    setState(() {
-      _isScanning = true;
-    });
-
-    try {
-      // Show consent dialog if required
-      if (widget.config.showConsentDialog && !_showConsentDialogFlag) {
-        final consent = await _showConsentDialog();
-        if (!consent) {
-          widget.onResult(const DocovueScanError(error: UserCancelled()));
-          return;
-        }
-        setState(() {
-          _showConsentDialogFlag = true;
-        });
-      }
-
-      // In a real implementation, this would open image picker
-      // and process the selected image
-      await Future.delayed(const Duration(seconds: 1));
-      
-      final result = await _simulateScanResult();
-      widget.onResult(result);
-
-    } catch (e) {
-      widget.onResult(DocovueScanError(error: GenericError(e.toString())));
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isScanning = false;
-        });
-      }
-    }
-  }
-
-  // Simulate scan result for demo purposes
-  Future<DocovueScanResult> _simulateScanResult() async {
-    // This is just for demonstration - real implementation would use DocovueScanner
-    return const DocovueScanError(error: GenericError('Simulation mode - implement platform-specific OCR'));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -599,7 +556,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
       children: [
         // Semi-transparent overlay with cutout
         Container(
-          color: Colors.black.withOpacity(0.5),
+          color: Colors.black.withValues(alpha: 0.5),
         ),
 
         // Document frame with dynamic color based on detection state
@@ -636,7 +593,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
                         vertical: 12,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.7),
+                        color: Colors.black.withValues(alpha: 0.7),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
@@ -692,7 +649,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
       iconColor = Colors.white;
     } else {
       icon = Icons.document_scanner;
-      bgColor = Colors.white.withOpacity(0.9);
+      bgColor = Colors.white.withValues(alpha: 0.9);
       iconColor = Colors.black87;
     }
 
@@ -703,7 +660,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -739,7 +696,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -894,7 +851,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
 
   Widget _buildScanningOverlay() {
     return Container(
-      color: Colors.black.withOpacity(0.7),
+      color: Colors.black.withValues(alpha: 0.7),
       child: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -927,7 +884,7 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
             end: Alignment.bottomCenter,
             colors: [
               Colors.transparent,
-              Colors.black.withOpacity(0.8),
+              Colors.black.withValues(alpha: 0.8)
             ],
           ),
         ),
@@ -971,9 +928,9 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
       width: 56,
       height: 56,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.5),
+        color: Colors.black.withValues(alpha: 0.5),
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withOpacity(0.3)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
       ),
       child: IconButton(
         onPressed: onPressed,
@@ -1025,14 +982,14 @@ class _DocovueScannerWidgetState extends State<DocovueScannerWidget>
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       decoration: BoxDecoration(
         color: _documentStable 
-            ? Colors.green.withOpacity(0.9)
+            ? Colors.green.withValues(alpha: 0.9)
             : _documentDetected
-                ? Colors.orange.withOpacity(0.9)
-                : Colors.white.withOpacity(0.9),
+                ? Colors.orange.withValues(alpha: 0.9)
+                : Colors.white.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
