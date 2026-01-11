@@ -33,12 +33,6 @@ flutter:
 topics:
   - ocr
   - document-scanning
-  - privacy
-  - aadhaar
-  - pan-card
-  - passport
-  - credit-card
-  - kyc
   - auto-capture
-  - liveness-detection
+  - privacy
   - ml-kit
