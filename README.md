@@ -445,6 +445,3 @@ Docovue is not a legally certified KYC solution. OCR accuracy is best-effort. Al
 - Follow compliance requirements for your jurisdiction
 - Use human review for critical workflows
 
----
-
-**Made with ❤️ for privacy-conscious developers**
