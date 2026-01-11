@@ -1,0 +1,44 @@
+name: docovue
+description: Privacy-first document scanning and OCR plugin for Flutter. Auto-capture with liveness detection. Supports Aadhaar, PAN, passports, credit cards, and more with 100% on-device processing.
+version: 1.0.0
+homepage: https://praveen-dev.space
+repository: https://github.com/yourusername/docovue
+issue_tracker: https://github.com/yourusername/docovue/issues
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.10.5+5
+  collection: ^1.17.2
+  meta: ^1.9.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.docovue.docovue
+        pluginClass: DocovuePlugin
+      ios:
+        pluginClass: DocovuePlugin
+
+topics:
+  - ocr
+  - document-scanning
+  - privacy
+  - aadhaar
+  - pan-card
+  - passport
+  - credit-card
+  - kyc
+  - auto-capture
+  - liveness-detection
+  - ml-kit
