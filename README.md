@@ -426,7 +426,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **Developer**: Praveen
 - **Email**: [praveenvenkat042k@gmail.com](mailto:praveenvenkat042k@gmail.com)
 - **Portfolio**: [praveen-dev.space](https://praveen-dev.space)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/docovue/issues)
+- **Issues**: [GitHub Issues](https://github.com/prawinn04/docovue/issues)
 
 ### Contributing
 
@@ -888,7 +888,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Development Setup
 
 ```bash
-git clone https://github.com/docovue/docovue.git
+git clone https://github.com/prawinn04/docovue.git
 cd docovue
 flutter pub get
 cd example
@@ -905,10 +905,10 @@ Docovue is not a legally certified KYC solution. Extraction accuracy is best eff
 
 ## 🆘 Support
 
-- 📖 [Documentation](https://docovue.dev/docs)
-- 🐛 [Issue Tracker](https://github.com/docovue/docovue/issues)
-- 💬 [Discussions](https://github.com/docovue/docovue/discussions)
-- 📧 [Email Support](mailto:support@docovue.dev)
+- 📖 [Documentation](https://github.com/prawinn04/docovue#-usage)
+- 🐛 [Issue Tracker](https://github.com/prawinn04/docovue/issues)
+- 💬 [Discussions](https://github.com/prawinn04/docovue/discussions)
+- 📧 [Email Support](mailto:praveenvenkat042k@gmail.com)
 
 ---
 
